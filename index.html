@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SVG test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<script src="data.js"></script>
+<script>
+    //判断浏览器是否支持HTML5
+    try {
+        document.createElement("canvas").getContext("2d");
+    }
+    catch (e) {
+        document.getElementById("support").innerHTML = "<h3>你的浏览器不支持HTML5,请安装现代化的浏览器。我们推荐使用最新版的Chrome、 FireFox</h3>";
+    }
+
+    //判断是否是IE
+    function isIE() { //ie?
+        if (!!window.ActiveXObject || "ActiveXObject" in window)
+            return true;     // alert("IE");
+        else
+            return false;       //alert("NOT IE");
+    }
+</script>
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns:ev="http://www.w3.org/2001/xml-events"
+     xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/"
+     width="11.6929in" height="8.26772in"
+     id="svgDDD"
+     viewBox="0 0 841.89 595.276" xml:space="preserve"
+     color-interpolation-filters="sRGB" class="st9">
+</svg>
+<script>
+    document.getElementById('svgDDD').get
+</script>
+</body>
+</html>

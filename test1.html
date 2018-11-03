@@ -1,0 +1,261 @@
+复制代码
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+    //判断浏览器是否支持HTML5
+    try {
+        document.createElement("canvas").getContext("2d");
+    }
+    catch (e) {
+        document.getElementById("support").innerHTML = "<h3>你的浏览器不支持HTML5,请安装现代化的浏览器。我们推荐使用最新版的Chrome、 FireFox</h3>";
+    }
+
+    //判断是否是IE
+    function isIE() { //ie?
+        if (!!window.ActiveXObject || "ActiveXObject" in window)
+            return true;     // alert("IE");
+        else
+            return false;       //alert("NOT IE");
+    }
+
+</script>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
+        xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" width="11.6929in" height="8.26772in"
+        viewBox="0 0 841.89 595.276" xml:space="preserve" color-interpolation-filters="sRGB" class="st9" onload="SetTagDisplay()">
+
+    <script ><![CDATA[
+    //已请求服务获取Json串，Json串排序处理，根据Value，算出动画颜色得到如下Json串。
+    var jsn = [{"Tag": "A8", "Val": "12", "Color": "#ff0000"}, {"Tag": "A7", "Val": "11", "Color": "#ff3300"},
+        {"Tag": "A3", "Val": "10", "Color": "#ff6600"},
+        {"Tag": "A4", "Val": "9", "Color": "#ffcc00"},
+        {"Tag": "A5", "Val": "9", "Color": "#ffff00"},
+        {"Tag": "A6", "Val": "8", "Color": "#ff99cc"},
+        {"Tag": "A2", "Val": "6", "Color": "#ffcccc"},
+        {"Tag": "A1", "Val": "6", "Color": "#ffcccc"}]; //注意颜色f要小写,js大小敏感。 JS获得到的颜色都是小写f
+
+    function SetTagDisplay() {
+        if (isIE()) {
+            window.setInterval(ieSetColor, 1000);
+        }
+        else {
+            for (var i = 0; i < jsn.length; i++) {
+                var TagName = jsn[i].Tag;
+                var TagColor = jsn[i].Color;
+                var sdy = document.createElementNS("http://www.w3.org/2000/svg", "animate");
+                sdy.setAttribute("attributeName", "fill");
+                sdy.setAttribute("attributeType", "CSS");
+                sdy.setAttribute("from", "#ffffff");
+                sdy.setAttribute("to", TagColor);
+                sdy.setAttribute("begin", "1s");
+                sdy.setAttribute("dur", "2s");
+                sdy.setAttribute("repeatCount", "indefinite");
+                document.querySelector("#"+TagName).setAttribute("visibility","visible");
+                document.querySelector("#"+TagName).appendChild(sdy);
+
+            }
+        }
+    }
+
+    function ieSetColor() { //IE浏览器效果
+        for (var i = 0; i < jsn.length; i++) {
+            var TagName = jsn[i].Tag;
+            var colorInfo = jsn[i].Color;
+            var varRect = document.querySelector("#" + TagName);
+            varRect.setAttribute("visibility","visible");
+            varRect.setAttribute("class", ""); //必须动态清除原有class 否则展现不出来效果。
+            varRect.setAttribute("stroke","#ebeff5");
+            varRect.setAttribute("stroke-width","0.75");
+            var colorSet = varRect.getAttribute("fill");
+            if (colorSet == colorInfo) {
+                varRect.setAttribute("fill", "#ffffff");
+            }
+            else {
+                varRect.setAttribute("fill", colorInfo);
+            }
+        }
+    }
+
+    ]]></script>
+    <v:documentProperties v:langID="2052" v:metric="true" v:viewMarkup="false">
+        <v:userDefs>
+            <v:ud v:nameU="msvSubprocessMaster" v:prompt="" v:val="VT4(Rectangle)"/>
+            <v:ud v:nameU="msvNoAutoConnect" v:val="VT0(1):26"/>
+        </v:userDefs>
+    </v:documentProperties>
+
+    <style type="text/css">
+        .st1 {fill:url(#grad0-4);stroke:#4f87bb;stroke-width:0.75}
+        .st2 {fill:#4f87bb;font-family:黑体;font-size:1.00001em}
+        .st3 {font-family:Calibri;font-size:1em}
+        .st4 {fill:#4f87bb;font-family:黑体;font-size:0.833336em}
+        .st5 {marker-end:url(#mrkr4-22);stroke:#5b9bd5;stroke-linecap:round;stroke-linejoin:round;stroke-width:1}
+        .st6 {fill:#5b9bd5;fill-opacity:1;stroke:#5b9bd5;stroke-opacity:1;stroke-width:0.28409090909091}
+        .st7 {fill:#ffffff;stroke:#ebeff5;stroke-width:0.75}
+        .st8 {fill:#759fcc;font-family:Calibri;font-size:0.833336em}
+        .st9 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+
+    </style>
+
+    <defs id="Patterns_And_Gradients">
+        <linearGradient id="grad0-4" x1="0" y1="0" x2="1" y2="0" gradientTransform="rotate(60 0.5 0.5)">
+            <stop offset="0" stop-color="#e9eff7" stop-opacity="1"/>
+            <stop offset="0.24" stop-color="#f4f7fb" stop-opacity="1"/>
+            <stop offset="0.54" stop-color="#feffff" stop-opacity="1"/>
+        </linearGradient>
+    </defs>
+    <defs id="Markers">
+        <g id="lend4">
+            <path d="M 2 1 L 0 0 L 2 -1 L 2 1 " style="stroke:none"/>
+        </g>
+        <marker id="mrkr4-22" class="st6" v:arrowType="4" v:arrowSize="2" v:setback="7.04" refX="-7.04" orient="auto"
+                markerUnits="strokeWidth" overflow="visible">
+            <use xlink:href="#lend4" transform="scale(-3.52,-3.52) "/>
+        </marker>
+    </defs>
+    <g v:mID="0" v:index="1" v:groupContext="foregroundPage">
+        <v:userDefs>
+            <v:ud v:nameU="msvThemeOrder" v:val="VT0(0):26"/>
+        </v:userDefs>
+        <title>页-1</title>
+        <v:pageProperties v:drawingScale="0.0393701" v:pageScale="0.0393701" v:drawingUnits="24" v:shadowOffsetX="8.50394"
+                v:shadowOffsetY="-8.50394"/>
+        <v:layer v:name="连接线" v:index="0"/>
+        <g id="shape2-1" v:mID="2" v:groupContext="shape" transform="translate(37.1568,-425.197)">
+            <title>工作表.2</title>
+            <desc>系统1</desc>
+            <v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+            <v:textRect cx="35.4331" cy="531.496" width="70.87" height="127.559"/>
+            <rect x="0" y="467.717" width="70.8661" height="127.559" class="st1"/>
+            <text x="20.39" y="535.49" class="st2" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>系统<tspan class="st3">1</tspan></text>        </g>
+        <g id="shape6-7" v:mID="6" v:groupContext="shape" transform="translate(184.252,-439.37)">
+            <title>平行四边形</title>
+            <desc>中继34</desc>
+            <v:userDefs>
+                <v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+            </v:userDefs>
+            <v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+            <v:textRect cx="56.6929" cy="552.756" width="113.39" height="85.0394"/>
+            <path d="M0 595.28 L102.05 595.28 L113.39 510.24 L11.34 510.24 L0 595.28 Z" class="st1"/>
+            <text x="44.16" y="556.08" class="st4" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>中继<tspan class="st3">1</tspan></text>        </g>
+        <g id="shape7-12" v:mID="7" v:groupContext="shape" transform="translate(376.165,-446.457)">
+            <title>平行四边形.7</title>
+            <desc>中继2sss</desc>
+            <v:userDefs>
+                <v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+            </v:userDefs>
+            <v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+            <v:textRect cx="56.6929" cy="552.756" width="113.39" height="85.0394"/>
+            <path d="M0 595.28 L102.05 595.28 L113.39 510.24 L11.34 510.24 L0 595.28 Z" class="st1"/>
+            <text x="44.16" y="556.08" class="st4" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>中继<tspan class="st3">2</tspan></text>        </g>
+        <g id="shape8-17" v:mID="8" v:groupContext="shape" v:layerMember="0" transform="translate(108.023,-490.317)">
+            <title>动态连接线</title>
+            <path d="M0 595.28 L43.73 595.28 L43.73 610.79 L73.91 610.79" class="st5"/>
+        </g>
+        <g id="shape9-23" v:mID="9" v:groupContext="shape" v:layerMember="0" transform="translate(291.969,-478.346)">
+            <title>动态连接线.9</title>
+            <path d="M0 591.73 L16.3 591.73 L16.3 584.65 L82.83 584.65" class="st5"/>
+        </g>
+        <g id="shape14-28" v:mID="14" v:groupContext="shape" transform="translate(568.078,-432.283)">
+            <title>正方形</title>
+            <desc>系统2</desc>
+            <v:userDefs>
+                <v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+            </v:userDefs>
+            <v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+            <v:textRect cx="56.6929" cy="538.583" width="113.39" height="113.386"/>
+            <rect x="0" y="481.89" width="113.386" height="113.386" class="st1"/>
+            <text x="44.16" y="541.91" class="st4" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>系统<tspan class="st3">2</tspan></text>        </g>
+        <g id="shape15-33" v:mID="15" v:groupContext="shape" v:layerMember="0" transform="translate(483.882,-481.89)">
+            <title>动态连接线.15</title>
+            <path d="M0 588.19 L77.16 588.19" class="st5"/>
+        </g>
+        <g id="shape16-38" v:mID="16" v:groupContext="shape" transform="translate(42.7112,-460.098)">
+            <title>矩形</title>
+            <desc>A1</desc>
+            <v:userDefs>
+                <v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+            </v:userDefs>
+            <v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+            <v:textRect cx="29.8787" cy="587.657" width="59.76" height="15.2362"/>
+            <rect id="A1" x="0" y="580.039" width="59.7574" height="15.2362" class="st7" visibility="hidden"/>
+            <text x="24.45" y="590.66" class="st8" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>A1</text>        </g>
+        <g id="shape17-41" v:mID="17" v:groupContext="shape" transform="translate(42.7112,-445.925)">
+            <title>矩形.17</title>
+            <desc>A2</desc>
+            <v:userDefs>
+                <v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+            </v:userDefs>
+            <v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+            <v:textRect cx="29.8787" cy="587.657" width="59.76" height="15.2362"/>
+            <rect id="A2" x="0" y="580.039" width="59.7574" height="15.2362" class="st7" visibility="hidden"/>
+            <text x="24.45" y="590.66" class="st8" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>A2</text>        </g>
+        <g id="shape18-44" v:mID="18" v:groupContext="shape" transform="translate(42.5197,-431.752)">
+            <title>矩形.18</title>
+            <desc>A3</desc>
+            <v:userDefs>
+                <v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+            </v:userDefs>
+            <v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+            <v:textRect cx="29.8787" cy="587.657" width="59.76" height="15.2362"/>
+            <rect id="A3" x="0" y="580.039" width="59.7574" height="15.2362" class="st7" visibility="hidden"/>
+            <text x="24.45" y="590.66" class="st8" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>A3</text>        </g>
+        <g id="shape19-47" v:mID="19" v:groupContext="shape" transform="translate(211.066,-445.925)">
+            <title>矩形.19</title>
+            <desc>A4</desc>
+            <v:userDefs>
+                <v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+            </v:userDefs>
+            <v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+            <v:textRect cx="29.8787" cy="587.657" width="59.76" height="15.2362"/>
+            <rect id="A4" x="0" y="580.039" width="59.7574" height="15.2362" class="st7" visibility="hidden"/>
+            <text x="24.45" y="590.66" class="st8" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>A4</text>        </g>
+        <g id="shape20-50" v:mID="20" v:groupContext="shape" transform="translate(395.318,-452.48)">
+            <title>矩形.20</title>
+            <desc>A5</desc>
+            <v:userDefs>
+                <v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+            </v:userDefs>
+            <v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+            <v:textRect cx="29.8787" cy="587.657" width="59.76" height="15.2362"/>
+            <rect id="A5" x="0" y="580.039" width="59.7574" height="15.2362" class="st7" visibility="hidden"/>
+            <text x="24.45" y="590.66" class="st8" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>A5</text>        </g>
+        <g id="shape21-53" v:mID="21" v:groupContext="shape" transform="translate(594.893,-466.654)">
+            <title>矩形.21</title>
+            <desc>A6</desc>
+            <v:userDefs>
+                <v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+            </v:userDefs>
+            <v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+            <v:textRect cx="29.8787" cy="587.657" width="59.76" height="15.2362"/>
+            <rect id="A6" x="0" y="580.039" width="59.7574" height="15.2362" class="st7" visibility="hidden"/>
+            <text x="24.45" y="590.66" class="st8" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>A6</text>        </g>
+        <g id="shape22-56" v:mID="22" v:groupContext="shape" transform="translate(594.893,-452.48)">
+            <title>矩形.22</title>
+            <desc>A7</desc>
+            <v:userDefs>
+                <v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+            </v:userDefs>
+            <v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+            <v:textRect cx="29.8787" cy="587.657" width="59.76" height="15.2362"/>
+            <rect id="A7" x="0" y="580.039" width="59.7574" height="15.2362" class="st7" visibility="hidden"/>
+            <text x="24.45" y="590.66" class="st8" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>A7</text>        </g>
+        <g id="shape23-59" v:mID="23" v:groupContext="shape" transform="translate(594.893,-438.307)">
+            <title>矩形.23</title>
+            <desc>A8</desc>
+            <v:userDefs>
+                <v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+            </v:userDefs>
+            <v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+            <v:textRect cx="29.8787" cy="587.657" width="59.76" height="15.2362"/>
+            <rect  id="A8" x="0" y="580.039" width="59.7574" height="15.2362" class="st7" visibility="hidden"/>
+            <text x="24.45" y="590.66" class="st8" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>A8</text>        </g>
+    </g>
+</svg>
+
+</body>
+</html>
